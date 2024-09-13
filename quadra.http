@@ -1,0 +1,40 @@
+###
+POST http://localhost:3000/quadra HTTP/1.1
+Content-Type: application/json
+
+{
+        "publicplace": "publicplace",
+        "zipcode": "zipcode",
+        "photos": "photos",
+        "type": "type",
+        "name": "name",
+        "state": "state",
+        "city": "city",
+        "neighborhood": "neighborhood"
+}
+
+###
+GET http://localhost:3000/quadra HTTP/1.1
+Content-Type: application/json
+
+
+###
+PUT http://localhost:3000/quadra/1 HTTP/1.1
+Content-Type: application/json
+
+{
+       "publicplace": "Rua Sem volta",
+        "zipcode": "12345-345",
+        "photos": "photos",
+        "type": "quadra1",
+        "name": "Juan",
+        "state": "SP",
+        "city": "São Carlos",
+        "neighborhood": "Santa Paula" 
+}
+
+###
+DELETE http://localhost:3000/quadra/0 HTTP/1.1
+Content-Type: application/json
+
+
