@@ -1,0 +1,19 @@
+###
+POST http://localhost:3000/pagamento HTTP/1.1
+Content-Type: application/json
+
+{     
+        "method": "method",
+        "total": "total",
+        "date": "2024-12-12" ,
+        "iduser": 1 ,
+        "idlocation": 2
+}
+
+###
+GET http://localhost:3000/pagamento HTTP/1.1
+Content-Type: application/json
+
+###
+DELETE http://localhost:3000/pagamento/1 HTTP/1.1
+Content-Type: application/json
