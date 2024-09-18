@@ -3,11 +3,12 @@ const app = express()
 const port = 3000
 app.use(express.json())
 
+
 const cuser = require('./controllers/user')
 const cquadra = require('./controllers/quadras')
-const cpagamento = require('./controllers/pagamento')
 const clocacao = require('./controllers/locacao')
 
+const payments = require('./routes/payments')
 
 app.post("/user", (req, res) => {
     const {name, pass, cpf, email, phone, type} = req.body
@@ -102,37 +103,7 @@ app.delete("/quadra/:id", (req, res) =>{
 } )
 
 
-app.post("/pagamento", (req, res) => {
-    const {method, total, date, iduser, idlocation} = req.body
 
-    if(!method ||  !total ||  !date || !iduser || !idlocation){
-        return res.status(400).json({ 
-            message: 'Todos os campos são obrigatorios'
-        })
-    }
-
-    const pagamento = cpagamento.create_pagamento(method, total, date, iduser, idlocation)
-
-    return res.status(200).json({ 
-        message: 'Sucesso', pagamento_created: pagamento
-    })
-})
-
-app.get("/pagamento",(req, res) =>{
-    return res.status(200).json({
-        message: 'Sucesso', list_pagamento: cpagamento.read_pagamento()
-    })
-})
-
-
-app.delete("/pagamento/:id", (req, res)=>{
-    const id = parseInt(req.params.id)
-    if(cpagamento.delete_pagamento(id)){
-        return res.status(201).json("Foi de base")
-    }else{
-        return res.status(404).json("Não encontrado")
-    }
-})
 
 
 
