@@ -8,7 +8,8 @@ const cuser = require('./controllers/user')
 const cquadra = require('./controllers/quadras')
 const clocacao = require('./controllers/locacao')
 
-const payments = require('./routes/payments')
+const rpayments = require('./routes/payments')
+app.use('/payments', rpayments)
 
 app.post("/user", (req, res) => {
     const {name, pass, cpf, email, phone, type} = req.body
