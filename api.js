@@ -10,6 +10,9 @@ const clocacao = require('./controllers/locacao')
 
 const rpayments = require('./routes/payments')
 app.use('/payments', rpayments)
+const rquadra = require('./routes/quadras')
+app.use('/quadras', rquadra)
+
 
 app.post("/user", (req, res) => {
     const {name, pass, cpf, email, phone, type} = req.body
@@ -55,53 +58,7 @@ app.delete("/user/:id", (req, res)=>{
 
 
 
-app.post("/quadra", (req, res) => {
-    const { publicplace, zipcode, photos, type, name, state, city, neighborhood} = req.body
 
-    if(!publicplace || !zipcode || !photos || !type || !name || !state || !city || ! neighborhood){
-        return res.status(400).json({
-            massege: 'Todos os campos são obrigatórios'
-        })
-    }
-
-    const quadra = cquadra.create_quadra( publicplace, zipcode, photos, type, name, state, city, neighborhood)
-    return res.status(200).json({
-        massege: 'Sucesso', quadra_created: quadra
-    })
-
-} )
-
-
-
-
-app.get("/quadra", (req, res) =>{
-    return res.status(200).json({
-        massege: 'Sucesso', list_quadra: cquadra.read_quadra()
-    })
-})
-
-
-
-app.put("/quadra/:id", (req, res) => {
-    const id = parseInt(req.params.id)
-
-    const {publicplace, zipcode, photos, type, name, state, city, neighborhood} = req.body
-
-    let retorno = cquadra.update_quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood)
-    return res.status(retorno.status).json(retorno.msg)
-
-})
-
-
-
-app.delete("/quadra/:id", (req, res) =>{
-    const id = parseInt(req.params.id)
-    if(cquadra.delete_quadras(id)){
-        return res.status(201).json("Foi de base")
-    }else{
-        return res.status(404).json("Não encontrado")
-    }
-} )
 
 
 
