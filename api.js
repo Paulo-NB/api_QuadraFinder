@@ -4,9 +4,10 @@ const port = 3000
 app.use(express.json())
 
 
+const rlocacao = require('./routes/location')
+app.use('/location', rlocacao)
+
 const cuser = require('./controllers/user')
-const cquadra = require('./controllers/quadras')
-const clocacao = require('./controllers/locacao')
 
 const rpayments = require('./routes/payments')
 app.use('/payments', rpayments)
@@ -113,6 +114,7 @@ app.delete("/location/:id", (req, res)=>{
     }
 })
 
+const cpagamento = require('./controllers/pagamento')
 
 app.listen(port, () => {
     console.log(`Run: http://localhost:${port}`);
