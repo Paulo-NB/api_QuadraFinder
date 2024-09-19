@@ -13,6 +13,14 @@ app.use('/quadras', rquadra)
 const ruser = require('./routes/user')
 app.use('/user', ruser)
 
+const sequelize = require('./config/database')
+
+sequelize.authenticate().then(
+    ()=>console.log("Banco conectado")
+).catch(
+    err => console.error("Erro bd:", err)
+)
+
 
 
 app.listen(port, () => {

@@ -1,23 +1,23 @@
 {
     "development":{
-        "username":"paulo",
-        "password":"senac123",
+        "username":"rafael",
+        "password":"@Azumi17",
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
     },
     
     "teste":{
-        "username":"paulo",
-        "password":"senac123",
+        "username":"rafael",
+        "password":"@Azumi17",
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
     },
 
     "production":{
-        "username":"paulo",
-        "password":"senac123",
+        "username":"rafael",
+        "password":"@Azumi17",
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
