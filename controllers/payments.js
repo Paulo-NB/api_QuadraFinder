@@ -1,3 +1,4 @@
+const Payments = require('../models/payments')
 
 
 var paymentss = [] 
@@ -9,14 +10,10 @@ function create_payments(method, total, date, iduser, idlocation){
         id = paymentss [paymentss.length-1].id + 1
     }
 
-    const payments  = {
-        "id": id,
-        "method": method,
-        "total": total,
-        "date": date,
-        "iduser": iduser,
-        "idlocation":idlocation
-    }
+    const payments = new Payments (id, method, total, date, iduser, idlocation)
+     
+        
+
     paymentss.push(payments )
     return payments 
 }
