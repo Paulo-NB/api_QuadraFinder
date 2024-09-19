@@ -1,24 +1,22 @@
-
+const Location = require('../models/location')
 
 var locations = []
 
 
-function create_location(iduser,idcourt,idpayment, date){
+function create_location(iduser,idcourt,idpayment,date){
     let id = 0
     if(locations.length > 0){
         id = locations [locations.length - 1].id + 1
     }
 
-    const location = {
-        "id": id,
-        "iduser": iduser,
-        "idcourt": idcourt,
-        "idpayment": idpayment,
-        "date": date
-    }
+    const location = new Location(id, iduser, idcourt, idpayment, date)
+        
     locations.push(location)
     return location
+}
 
+function read_location(){
+    return locations
 }
 
 function update_location(id, iduser, idcourt, date){
@@ -43,10 +41,6 @@ function delete_location(id){
 
     locations.splice(idx, 1)
     return true
-}
-
-function read_location(){
-    return locations
 }
 
 module.exports = {
