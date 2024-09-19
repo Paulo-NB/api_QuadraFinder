@@ -1,6 +1,6 @@
 {
     "development":{
-        "username":"thayanan",
+        "username":"paulo",
         "password":"senac123",
         "database":"teste",
         "host":"172.0.0.1",
@@ -8,7 +8,7 @@
     },
     
     "teste":{
-        "username":"thayanan",
+        "username":"paulo",
         "password":"senac123",
         "database":"teste",
         "host":"172.0.0.1",
@@ -16,7 +16,7 @@
     },
 
     "production":{
-        "username":"thayanan",
+        "username":"paulo",
         "password":"senac123",
         "database":"teste",
         "host":"172.0.0.1",
