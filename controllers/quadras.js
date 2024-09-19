@@ -1,4 +1,5 @@
 
+const Quadras = require('../models/quadras')
 
 var quadras = []
 
@@ -8,17 +9,8 @@ function create_quadra(publicplace, zipcode, photos, type, name, state, city, ne
         id = quadras[quadras.length-1].id + 1
     }
 
-    const quadra = {
-        "id": id,
-        "publicplace": publicplace,
-        "zipcode": zipcode,
-        "photos": photos,
-        "type": type,
-        "name": name,
-        "state": state,
-        "city": city,
-        "neighborhood": neighborhood
-    }
+    const quadra = new Quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood)
+
     quadras.push(quadra)
     return quadra
 
