@@ -1,23 +1,38 @@
 {
     "development":{
+<<<<<<< HEAD
         "username":"rafael",
         "password":"@Azumi17",
+=======
+        "username":"juan",
+        "password":"senac123",
+>>>>>>> 269b739896629e92bcd35711d00f9816bac6389c
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
     },
     
     "teste":{
+<<<<<<< HEAD
         "username":"rafael",
         "password":"@Azumi17",
+=======
+        "username":"juan",
+        "password":"senac123",
+>>>>>>> 269b739896629e92bcd35711d00f9816bac6389c
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
     },
 
     "production":{
+<<<<<<< HEAD
         "username":"rafael",
         "password":"@Azumi17",
+=======
+        "username":"juan",
+        "password":"senac123",
+>>>>>>> 269b739896629e92bcd35711d00f9816bac6389c
         "database":"teste",
         "host":"172.0.0.1",
         "dialect":"mysql"
