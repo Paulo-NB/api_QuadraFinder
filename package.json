@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "express": "^4.21.0",
-    "node": "^22.8.0"
+    "node": "^22.9.0"
   }
 }
