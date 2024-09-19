@@ -1,22 +1,18 @@
+const User = require('../models/user')
+
+
+
 
 var vusers = []
 
 
 
 function create_user(name, pass, cpf, email, phone, type){
-    let id = 0
+    let id = 10000
     if(vusers.length > 0) {
-        id = vusers[vusers.length-1].id + 1
+        id = vusers[vusers.length-1].id + 58774
     }
-    const user = {
-        "id": id,
-        "name": name,
-        "pass": pass,
-        "cpf": cpf,
-        "email": email,
-        "phone": phone,
-        "type": type
-    }
+    const user = new User(id, name, pass, cpf, email, phone, type)
     vusers.push(user)
     return user
 }
