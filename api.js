@@ -11,7 +11,6 @@ sequelize.authenticate().then(
     err => console.error("Erro bd:", err)
 )
 
-
 const rlocacao = require('./routes/location')
 app.use('/location', rlocacao)
 const rpayments = require('./routes/payments')
@@ -20,7 +19,6 @@ const rquadra = require('./routes/quadras')
 app.use('/quadras', rquadra)
 const ruser = require('./routes/user')
 app.use('/user', ruser)
-
 
 
 

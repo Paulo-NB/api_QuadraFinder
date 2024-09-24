@@ -3,44 +3,45 @@ const Quadras = require('../models/quadras')
 
 var quadras = []
 
-function create_quadra(publicplace, zipcode, photos, type, name, state, city, neighborhood){
-    let id = 0
-    if(quadras.length > 0) {
-        id = quadras[quadras.length-1].id + 1
-    }
-
-    const quadra = new Quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood)
+async function create_quadra(publicplace, zipcode, photos, type, name, state, city, neighborhood){
+    
+    const quadra = await Quadras.create({id, publicplace, zipcode, photos, type, name, state, city, neighborhood})
 
     quadras.push(quadra)
     return quadra
 
 }
 
-function update_quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood){
-    let idx = quadras.findIndex(quadra => quadra.id === id)
+async function update_quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood){
+   const quadra = await Quadras.findByPk(id)
 
-    if(idx == -1){
+    if(!quadra){
         return {status: 404, msg: "Não encontrado"}
     }
-    if(publicplace) quadras[idx].publicplace = publicplace
-    if(zipcode) quadras[idx].zipcode = zipcode
-    if(photos) quadras[idx].photos = photos
-    if(type) quadras[idx].type = type
-    if(name) quadras[idx].name = name
-    if(state) quadras[idx].state = state
-    if(city) quadras[idx].city = city
-    if(neighborhood) quadras[idx].neighborhood = neighborhood
-    return {status: 201, msg: quadras[idx]}
+    if(publicplace) quadra.publicplace = publicplace
+    if(zipcode) quadra.zipcode = zipcode
+    if(photos) quadra.photos = photos
+    if(type) quadra.type = type
+    if(name) quadra.name = name
+    if(state) quadra.state = state
+    if(city) quadra.city = city
+    if(neighborhood) quadra.neighborhood = neighborhood
+
+    await quadra.save()
+
+    return {status: 201, msg: quadra}
 }
 
 
-function delete_quadras(id){
-    let idx = quadras.findIndex(quadra => quadra.id === id)
-    if(idx == -1){
+async function delete_quadras(id){
+    const quadra = await Quadras.findByPk(id)
+
+    if(!quadra){
         return false
     }
 
-    quadras.splice(idx, 1)
+    await quadra.destroy()
+
     return true
 }
 
