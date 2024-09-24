@@ -5,7 +5,6 @@ async function create_location(iduser,idcourt,idpayment,date){
    
     const location = await Location.create({id, iduser, idcourt, idpayment, date})
         
-    locations.push(location)
     return location
 }
 
