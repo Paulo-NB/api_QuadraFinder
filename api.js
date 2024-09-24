@@ -3,6 +3,14 @@ const app = express()
 const port = 3000
 app.use(express.json())
 
+const sequelize = require('./config/database')
+
+sequelize.authenticate().then(
+    ()=>console.log("Banco conectado")
+).catch(
+    err => console.error("Erro bd:", err)
+)
+
 
 const rlocacao = require('./routes/location')
 app.use('/location', rlocacao)
@@ -13,13 +21,7 @@ app.use('/quadras', rquadra)
 const ruser = require('./routes/user')
 app.use('/user', ruser)
 
-const sequelize = require('./config/database')
 
-sequelize.authenticate().then(
-    ()=>console.log("Banco conectado")
-).catch(
-    err => console.error("Erro bd:", err)
-)
 
 
 

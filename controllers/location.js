@@ -1,46 +1,44 @@
 const Location = require('../models/location')
 
-var locations = []
 
-
-function create_location(iduser,idcourt,idpayment,date){
-    let id = 0
-    if(locations.length > 0){
-        id = locations [locations.length - 1].id + 1
-    }
-
-    const location = new Location(id, iduser, idcourt, idpayment, date)
+async function create_location(iduser,idcourt,idpayment,date){
+   
+    const location = await Location.create({id, iduser, idcourt, idpayment, date})
         
     locations.push(location)
     return location
 }
 
-function read_location(){
-    return locations
+async function read_location(){
+    return await Location.findAll
 }
 
-function update_location(id, iduser, idcourt, date){
-    let idx = locations.findIndex(location => location.id === id)
+async function update_location(id, iduser, idcourt, date){
+    const location = await Location.findByPk(id)
 
-    if(idx == -1){
+    if(!location){
         return {status: 404, msg: "Não encontrado"}
     }
 
-    if(iduser) locations[idx].iduser = iduser
-    if(idcourt) locations[idx].idcourt = idcourt
-    if(date) locations[idx].date = date
+    if(iduser) location.iduser = iduser
+    if(idcourt) location.idcourt = idcourt
+    if(date) location.date = date
 
-    return {status: 200, msg: locations[idx]}
+    await location.save()
+
+    return {status: 200, msg: location}
 }
 
-function delete_location(id){
-    let idx = locations.findIndex(location => location.id === id)
-    if(idx == -1){
-        return false
+async function delete_location(id){
+    const location = await Location.findByPk(id)
+
+    if(!location){
+        return {status: 404, msg: "Não encontrado"}
     }
 
-    locations.splice(idx, 1)
-    return true
+    await location.destroy()
+
+    return false
 }
 
 module.exports = {
