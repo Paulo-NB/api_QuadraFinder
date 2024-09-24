@@ -1,15 +1,19 @@
+'payments strict'
 
-class Payments{
-    constructor(pid, pmethod, ptotal, pdate, piduser, pidlocation){
-        this.id = pid
-        this.method = pmethod
-        this.total = ptotal
-        this.date = pdate
-        this.iduser= piduser
-        this.idlocation = pidlocation 
-    }
+const { Model, DataTypes} = require('sequelize')
+const sequelize = require('../config/database')
 
-    /* Colocar outro metodos aqui*/
-}
+class Payments extends Model {}
+    Payments.init({
+        method: DataTypes.STRING,
+        total: DataTypes.STRING,
+        date: DataTypes.STRING,
+        iduser: DataTypes.STRING,
+        idlocation: DataTypes.STRING,
+        
+    },{
+        sequelize,
+        modelName: 'Payments'
+    })
 
 module.exports = Payments

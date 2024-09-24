@@ -4,13 +4,10 @@ const Payments = require('../models/payments')
 var paymentss = [] 
 
 
-function create_payments(method, total, date, iduser, idlocation){
-    let id = 0
-    if(paymentss.length > 0) {
-        id = paymentss [paymentss.length-1].id + 1
-    }
+ async function create_payments(method, total, date, iduser, idlocation){
+  
 
-    const payments = new Payments (id, method, total, date, iduser, idlocation)
+    const payments = await Payments.create ({id, method, total, date, iduser, idlocation})
      
         
 
@@ -19,14 +16,17 @@ function create_payments(method, total, date, iduser, idlocation){
 }
 
 
-function delete_payments(id){
-    let idx = paymentss.findIndex(payments => payments.id === id)
-    if(idx == -1){
+async function delete_payments(id){
+    const payments = await Payments.findByPK(id)
+
+    if(!payments){
         return false
     }
+      
+    await payments.destroy()
 
-    paymentss.splice(idx, 1)
     return true
+
 }
 
 
