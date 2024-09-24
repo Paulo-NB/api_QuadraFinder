@@ -2,53 +2,47 @@ const User = require('../models/user')
 
 
 
+async function create_user(name, pass, cpf, email, phone, type){
+    const user = await User.create({name, pass, cpf, email, phone, type})
 
-var vusers = []
-
-
-
-function create_user(name, pass, cpf, email, phone, type){
-    let id = 10000
-    if(vusers.length > 0) {
-        id = vusers[vusers.length-1].id + 58774
-    }
-    const user = new User(id, name, pass, cpf, email, phone, type)
-    vusers.push(user)
     return user
 }
 
-function update_user(id, name, pass, cpf, email, phone, type){
-    let idx = vusers.findIndex(user => user.id === id)
+async function update_user(id, name, pass, cpf, email, phone, type){
+    const user = await User.findByPk(id)
 
-    if(idx == -1){
+    if(!user){
         return {status: 404, msg: "Não encontrado"}
     }
 
-    if(name) vusers[idx].name = name
-    if(pass) vusers[idx].pass = pass
-    if(cpf) vusers[idx].cpf = cpf
-    if(email) vusers[idx].email = email
-    if(phone) vusers[idx].phone = phone
-    if(type) vusers[idx].type = type
+    if(name) user.name = name
+    if(pass) user.pass = pass
+    if(cpf) user.cpf = cpf
+    if(email) user.email = email
+    if(phone) user.phone = phone
+    if(type) user.type = type
     
+    await user.save()
 
-    return {status: 200, msg: vusers[idx]}
+
+    return {status: 200, msg: user}
 }
 
-function delete_user(id){
-    let idx = vusers.findIndex(user => user.id === id)
-    if(idx == -1){
+async function delete_user(id){
+    const user = await User.findByPk(id)
+
+    if(!user){
         return false
     }
 
-    vusers.splice(idx, 1)
+    await user.destroy()
+
     return true
 }
-function read_user(){
-    return vusers
+async function read_user(){
+    return await User.findAll
+
 }
-
-
 module.exports = {
     create_user,
     read_user,

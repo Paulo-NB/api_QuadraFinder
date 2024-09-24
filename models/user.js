@@ -1,17 +1,19 @@
-class User{
-    constructor(pid, pname, ppass, pcpf, pemail, pphone, ptype){
-        this.id = pid
-        this.name = pname
-        this.pass = ppass
-        this.cpf = pcpf
-        this.email = pemail
-        this.phone = pphone
-        this.type = ptype
-    }
+'use strict'
+const {Model, DataTypes} = require('sequelize')
+const sequelize = require('../config/database')
 
+class User extends Model{}
 
-
-
-}
+User.init({
+    name:  DataTypes.STRING,
+    pass: DataTypes.STRING,
+    cpf: DataTypes.STRING,
+    email: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    type: DataTypes.BOOLEAN
+}, {
+    sequelize,
+    modelName: 'User'
+})
 
 module.exports = User
