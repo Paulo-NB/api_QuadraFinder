@@ -62,6 +62,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('quadras')
+    await queryInterface.dropTable('Quadras')
   }
 };

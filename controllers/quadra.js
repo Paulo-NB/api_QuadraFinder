@@ -1,19 +1,16 @@
 
-const Quadras = require('../models/quadras')
-
-var quadras = []
+const Quadra = require('../models/quadra')
 
 async function create_quadra(publicplace, zipcode, photos, type, name, state, city, neighborhood){
     
-    const quadra = await Quadras.create({id, publicplace, zipcode, photos, type, name, state, city, neighborhood})
+    const quadra = await Quadras.create({publicplace, zipcode, photos, type, name, state, city, neighborhood})
 
-    quadras.push(quadra)
     return quadra
 
 }
 
-async function update_quadras(id, publicplace, zipcode, photos, type, name, state, city, neighborhood){
-   const quadra = await Quadras.findByPk(id)
+async function update_quadra(id, publicplace, zipcode, photos, type, name, state, city, neighborhood){
+   const quadra = await Quadra.findByPk(id)
 
     if(!quadra){
         return {status: 404, msg: "Não encontrado"}
@@ -29,12 +26,12 @@ async function update_quadras(id, publicplace, zipcode, photos, type, name, stat
 
     await quadra.save()
 
-    return {status: 201, msg: quadra}
+    return {status: 200, msg: quadra}
 }
 
 
-async function delete_quadras(id){
-    const quadra = await Quadras.findByPk(id)
+async function delete_quadra(id){
+    const quadra = await Quadra.findByPk(id)
 
     if(!quadra){
         return false
@@ -45,8 +42,8 @@ async function delete_quadras(id){
     return true
 }
 
-function read_quadra(){
-    return quadras
+async function read_quadra(){
+    return await quadra.findAll
 }
 
 
@@ -54,6 +51,6 @@ function read_quadra(){
 module.exports = {
     create_quadra,
     read_quadra,
-    update_quadras,
-    delete_quadras
+    update_quadra,
+    delete_quadra
 }
