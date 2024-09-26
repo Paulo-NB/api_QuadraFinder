@@ -2,14 +2,14 @@ const Location = require('../models/location')
 
 
 async function create_location(iduser,idcourt,idpayment,date){
-   
-    const location = await Location.create({id, iduser, idcourt, idpayment, date})
-        
+    console.log({iduser, idcourt, idpayment, date})
+    const location = await Location.create({iduser, idcourt, idpayment, date})
+    console.log(location)
     return location
 }
 
 async function read_location(){
-    return await Location.findAll
+    return await Location.findAll()
 }
 
 async function update_location(id, iduser, idcourt, date){

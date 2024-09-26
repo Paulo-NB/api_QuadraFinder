@@ -5,13 +5,19 @@ const sequelize = require('../config/database')
 class Location  extends Model{}
 
     Location.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         iduser: DataTypes.STRING,
         idcourt: DataTypes.STRING,
-        idpayment:DataTypes.STRING,
-        date: DataTypes.STRING
+        idpayment: DataTypes.STRING,
+        date: DataTypes.DATEONLY
     },{
         sequelize,
-        modelName: 'Location'
+        modelName: 'Location',
+        timestamps: true
     })
 
 

@@ -13,7 +13,7 @@ router.post("/create", (req, res) => {
 
     }
     const locations = clocacao.create_location(iduser, idcourt, idpayment, date)
-
+    console.log(locations)
     return res.status(200).json({message:'sucesso', location: locations})
 
 

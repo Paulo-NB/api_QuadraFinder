@@ -24,5 +24,5 @@ app.use('/user', ruser)
 
 
 app.listen(port, () => {
-    console.log(`Run: http://localhost:${port}`);
+    console.log(`Run: http://10.60.46.36:${port}`);
 })

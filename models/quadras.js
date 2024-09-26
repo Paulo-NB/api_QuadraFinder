@@ -12,8 +12,7 @@ Quadras.init({
     type:DataTypes.STRING,
     State:DataTypes.STRING,
     city:DataTypes.STRING,
-    neighborhood:DataTypes.STRING,
-    name:DataType.STRING,
+    neighborhood:DataTypes.STRING
 
 },{
     sequelize,
