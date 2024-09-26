@@ -13,8 +13,8 @@ sequelize.authenticate().then(
 
 const rlocacao = require('./routes/location')
 app.use('/location', rlocacao)
-const rpayments = require('./routes/payments')
-app.use('/payments', rpayments)
+const rpayment = require('./routes/payment')
+app.use('/payment', rpayment)
 const rquadra = require('./routes/quadras')
 app.use('/quadras', rquadra)
 const ruser = require('./routes/user')

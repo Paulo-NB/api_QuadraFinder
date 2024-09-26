@@ -7,11 +7,10 @@ const Payment = require('../models/payment')
  async function create_payment(method, total, date, iduser, idlocation){
   
 
-    const payment = await Payment.create ({id, method, total, date, iduser, idlocation})
+    const payment = await Payment.create ({method, total, date, iduser, idlocation})
      
         
 
-    payment.push(payment )
     return payment 
 }
 

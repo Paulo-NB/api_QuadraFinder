@@ -1,5 +1,9 @@
 'use strict';
 
+const sequelize = require('../config/database');
+const {primaryKeyAttribute} = require('../models/payment')
+
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -12,7 +16,7 @@ module.exports = {
     },
     method:{
       allowNull:true,
-      type: Sequelize.INTEGER 
+      type: Sequelize.STRING
 
     },
     total:{
@@ -35,11 +39,11 @@ module.exports = {
       type: Sequelize.INTEGER 
 
     },
-    createAt:{
+    createdAt:{
       allowNull:false,
       type: Sequelize.DATE
     },
-    updateAt:{
+    updatedAt:{
       allowNull:false,
       type: Sequelize.DATE
     }
