@@ -1,4 +1,4 @@
-const payment = require('../models/payment')
+const Payment = require('../models/payment')
 
 
 
@@ -7,7 +7,7 @@ const payment = require('../models/payment')
  async function create_payment(method, total, date, iduser, idlocation){
   
 
-    const payment = await payment.create ({id, method, total, date, iduser, idlocation})
+    const payment = await Payment.create ({id, method, total, date, iduser, idlocation})
      
         
 
@@ -17,13 +17,13 @@ const payment = require('../models/payment')
 
 
 async function delete_payment(id){
-    const payment = await payment.findByPK(id)
+    const payment = await Payment.findByPK(id)
 
     if(!payment){
         return false
     }
       
-    await payment.destroy()
+    await Pyment.destroy()
 
     return true
 

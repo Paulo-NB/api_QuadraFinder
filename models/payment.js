@@ -1,10 +1,10 @@
-'payment strict'
+'use strict'
 
 const { Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/database')
 
-class payment extends Model {}
-    payment.init({
+class Payment extends Model {}
+    Payment.init({
         method: DataTypes.STRING,
         total: DataTypes.STRING,
         date: DataTypes.STRING,
@@ -13,7 +13,7 @@ class payment extends Model {}
         
     },{
         sequelize,
-        modelName: 'payment'
+        modelName: 'Payment'
     })
 
-module.exports = payment
+module.exports = Payment
