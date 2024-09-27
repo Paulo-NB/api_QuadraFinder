@@ -3,9 +3,9 @@ POST http://localhost:3000/location/create HTTP/1.1
 Content-Type: application/json
 
 {
-    "iduser":1,
-    "idcourt": 2,
-    "idpayment": 1,
+    "iduser":4,
+    "idcourt": 10,
+    "idpayment": 10,
     "date": "2024-12-12"
 }
 
