@@ -1,6 +1,6 @@
-const { maxHeaderSize } = require('http')
-const Payment = require('../models/payment')
 
+const Payment = require('../models/payment')
+const {Op} = require('sequelize')
 
 
 
@@ -51,8 +51,20 @@ async function show_payment(req, res ) {
 }
 
 async function read_payment(req, res){
+    const {name} = req.query
+
+    const condition = {}
+
+    if (name){
+        condition.name = { [Op.like]: `%${name}%`}
+    }
+
+
     return res.status(200).json({
-        message: 'Sucesso', list_payment: await Payment.findAll()
+        message: 'Sucesso', list_payment: await Payment.findAll({
+            where: Object.keys(condition).length > 0?
+            condition: undefined
+        })
      
 
     })
