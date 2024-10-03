@@ -51,12 +51,12 @@ async function show_payment(req, res ) {
 }
 
 async function read_payment(req, res){
-    const {name} = req.query
+    const {method} = req.query
 
     const condition = {}
 
-    if (name){
-        condition.name = { [Op.like]: `%${name}%`}
+    if (method){
+        condition.method = { [Op.like]: `%${method}%`}
     }
 
 
