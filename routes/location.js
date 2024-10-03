@@ -7,16 +7,15 @@ router.post("/create", (req, res) => {
     const {iduser, idcourt, idpayment, date} = req.body
     
 
-    if(!iduser || !idcourt || !idpayment || !date){
+    if(iduser <0 || idcourt <0  || idpayment <0  || !date){
 
-        return res.status(400).json({message: 'ERRO ERRO ERRO'})
+        return res.status(400).json({
+            message: 'Os Campos iduser, idcourt, idpayment e Date são obrigatórios'
+        })
 
     }
-    const locations = clocacao.create_location(iduser, idcourt, idpayment, date)
 
-    return res.status(200).json({message:'sucesso', location: locations})
-
-
+    return clocacao.create_location(iduser, idcourt, idpayment, date, res)
 } )
 
 router.get("/read", (req, res) =>{

@@ -1,55 +1,67 @@
 'use strict';
-
-const { type } = require('os');
-
+const {type} = require('os');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Quadras',{
       id:{
-        allowNull: false,
-        autoIncrement: true,
+        allowNull:false,
+        autoIncrement:true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name:{
-        allowNull: false,
+      publicplace:{
+        allowNull:false,
+       
         type: Sequelize.STRING
       },
-      pass:{
+      zipcode:{
         allowNull:false,
+        
         type: Sequelize.STRING
       },
-      cpf:{
+      photos:{
         allowNull:false,
-        type: Sequelize.STRING
-      },
-      email:{
-        allowNull:false,
-        type: Sequelize.STRING
-      },
-      phone:{
-        allowNull:false,
+        
         type: Sequelize.STRING
       },
       type:{
         allowNull:false,
+        
         type: Sequelize.STRING
       },
-      createdAt:{
-        allowNull: false,
+      name:{
+        allowNull:false,
+       
+        type: Sequelize.STRING
+      },
+      state:{
+        allowNull:false,
+        
+        type: Sequelize.STRING
+      },
+      city:{
+        allowNull:false,
+        
+        type: Sequelize.STRING
+      },
+      neighborhood:{
+        allowNull:false,
+        
+        type: Sequelize.STRING
+      },
+      createAt:{
+        allowNull:false,
         type: Sequelize.DATE
       },
-      updatedAt:{
-        allowNull: false,
+      updateAt:{
+        allowNull:false,
         type: Sequelize.DATE
       }
     })
   },
 
   async down (queryInterface, Sequelize) {
-
-    await queryInterface.dropTable('Users');
-
+    await queryInterface.dropTable('Quadras')
   }
 };
