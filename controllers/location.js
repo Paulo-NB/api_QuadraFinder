@@ -4,8 +4,16 @@ const User = require('../models/user')
 const Quadra = require('../models/quadra')
 const Payment = require('../models/payment')
 
+async function create_location(req, res){
+    const {iduser, idcourt, idpayment, date} = req.body
+    
+    if(iduser <0 || idcourt <0  || idpayment <0  || !date){
 
-async function create_location(iduser, idcourt, idpayment, date, res){
+        return res.status(400).json({
+            message: 'Os Campos iduser, idcourt, idpayment e Date são obrigatórios'
+        })
+
+    }
     
     const user = await User.findByPk(iduser)
     if(!user){
@@ -51,15 +59,24 @@ async function create_location(iduser, idcourt, idpayment, date, res){
 
    
 
-async function read_location(){
-    return await Location.findAll()
+async function read_location(req, res){
+    return res.status(200).json({
+        message: 'Sucesso', list_users: await Location.findAll()
+    }
+    )
 }
 
-async function update_location(id, iduser, idcourt, date){
+async function update_location(req, res){
+    const id = parseInt(req.params.id)
+    
+    const {iduser, idcourt, date} = req.body
     const location = await Location.findByPk(id)
 
     if(!location){
-        return {status: 404, msg: "Não encontrado"}
+        return res.status(404).json({
+            message: "Não encontrado",
+            db: null
+        })
     }
 
     if(iduser) location.iduser = iduser
@@ -68,19 +85,23 @@ async function update_location(id, iduser, idcourt, date){
 
     await location.save()
 
-    return {status: 200, msg: location}
+    return res.status(203).json({
+        message: "Atualizado",
+        db: location
+    })
 }
 
-async function delete_location(id){
+async function delete_location(req, res){
+    const id = parseInt(req.params.id)
     const location = await Location.findByPk(id)
 
     if(!location){
-        return {status: 404, msg: "Não encontrado"}
+        return res.status(404).json ("Não encontrado")
     }
 
     await location.destroy()
 
-    return false
+    return res.status(201).json("Foi de base")
 }
 
 module.exports = {
