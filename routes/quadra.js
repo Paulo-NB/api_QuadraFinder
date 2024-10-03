@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const cquadra = require('../controllers/quadra')
-const cquadra = require('../controllers/quadra')
+
 
 
 

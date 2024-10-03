@@ -67,7 +67,7 @@ async function delete_quadra(req, res){
 
 async function read_quadra(req, res){
     return res.status(200).json({
-        massege: 'Sucesso', list_quadra:await quadra.findAll()
+        massege: 'Sucesso', list_quadra: await Quadra.findAll()
     })
 }
 
