@@ -19,6 +19,7 @@ async function update_user(req, res){
     const id = parseInt(req.params.id)
 
     const {name, pass, cpf, email, phone, type} = req.body
+    const user = await User.findByPk(id)
 
     if(!user){
         return res.status(404).json({
