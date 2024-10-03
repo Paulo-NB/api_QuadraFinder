@@ -78,12 +78,12 @@ async function show_location(req,res) {
 
 
 async function read_location(req, res){
-    const {idcourt} = req.query
+    const {iduser} = req.query
 
     const condition = {}
 
-    if(idcourt){
-        condition.idcourt = {[Op.like]:`%${idcourt}%`}
+    if (iduser) {
+        condition.iduser = iduser; // Comparação direta
     }
 
 
