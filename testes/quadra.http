@@ -34,7 +34,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/quadra/del/0 HTTP/1.1
+DELETE http://localhost:3000/quadra/del/1 HTTP/1.1
 Content-Type: application/json
 
 

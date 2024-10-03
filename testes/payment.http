@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {     
         "method": "method",
-        "total": "total",
+        "total": 100,
         "date": "2024-12-12" ,
         "iduser": 1 ,
         "idlocation": 2
@@ -15,7 +15,7 @@ GET http://localhost:3000/payment/read HTTP/1.1
 Content-Type: application/json
 
 ###
-DELETE http://localhost:3000/payment/del/1 HTTP/1.1
+DELETE http://localhost:3000/payment/del/3 HTTP/1.1
 Content-Type: application/json
 
 
