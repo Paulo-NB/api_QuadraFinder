@@ -57,6 +57,24 @@ async function create_location(req, res){
 
 }
 
+async function show_location(req,res) {
+    const id = parenInt(req.params.id)
+
+    const location = await Location.findByPk(id)
+    
+    if(!location){
+        return res.status(404).json({
+            message: "Não encotrado"
+        })
+    }
+
+    return res.status(202).json({
+        message: "Encotrei",
+        db: location
+    })
+    
+}
+
    
 
 async function read_location(req, res){
@@ -109,4 +127,5 @@ module.exports = {
     read_location,
     update_location,
     delete_location,
+    show_location,
 }
