@@ -12,34 +12,23 @@ const Payment = require('../models/payment')
             message: 'Todos os campos são obrigatorios'
         })
     }
-
-
     const payment = await Payment.create ({method, total, date, iduser, idlocation})
-     
-<<<<<<< HEAD
-        
-
-    return payment 
-=======
-    return res.status(200).json({
-        message:"sucesso",
-        db: payment
-    }) 
->>>>>>> afc3a7a (subi payment)
+    
+    return res.status(200).json({mensage: "Sucesso!", payment: payment})
 }
 
 
 async function delete_payment(req, res){
     const id = parseInt(req.params.id)
-    const payment = await Payment.findByPK(id)
+    const payment = await Payment.findByPk(id)
 
     if(!payment){
         return res.status(404).json("Não encontrado")
     }
     
-    await Payment.destroy()
+    await payment.destroy()
 
-    return res.status(201).json("Foi de baserado")
+    return res.status(201).json("Foi de base")
 }
 
 

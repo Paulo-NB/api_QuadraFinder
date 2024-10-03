@@ -1,10 +1,6 @@
 const express = require ('express')
 const router = express.Router()
-const cpayment = require('../controllers/payment')
-
-
-
-
+const cpayment = require ('../controllers/payment')
 
 router.post("/create", cpayment.create_payment)
 
