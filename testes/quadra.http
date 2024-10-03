@@ -18,11 +18,11 @@ GET http://localhost:3000/quadra/read HTTP/1.1
 Content-Type: application/json
 
 ###
-GET http://localhost:3000/quadra/show/2 HTTP/1.1
+GET http://localhost:3000/quadra/show/4 HTTP/1.1
 Content-Type: application/json
 
 ###
-PUT http://localhost:3000/quadra/update/1 HTTP/1.1
+PUT http://localhost:3000/quadra/update/4 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -37,7 +37,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/quadra/del/1 HTTP/1.1
+DELETE http://localhost:3000/quadra/del/4 HTTP/1.1
 Content-Type: application/json
 
 
