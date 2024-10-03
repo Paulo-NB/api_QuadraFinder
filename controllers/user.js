@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const {Op, where} = require('sequelize')
 
 
 
@@ -76,8 +77,21 @@ async function delete_user(req, res){
     return res.status(201).json("Foi de base")
 }
 async function read_user(req, res){
+
+    const {name} = req.query
+
+    const condition = {}
+
+    if(name){
+        condition.name = { [Op.like]: `%${name}%` }
+
+    }
+
     return res.status(200).json({
-        message: 'Sucesso', list_users: await User.findAll()
+        message: 'Sucesso', list_users: await User.findAll({
+            where: Object.keys(condition).length > 0?
+            condition: undefined
+        })
     })
 }
 module.exports = {
