@@ -15,6 +15,27 @@ async function create_user(req, res){
     return user
 }
 
+
+
+async function show_user(req, res){
+    const id = parseInt(req.params.id)
+    const user = await User.findByPk(id)
+
+    if(!user){
+        return res.status(404).json({
+            message: "Não encontrado"
+        })
+    }
+    
+    return res.status(202).json({
+        message: "Encontrei",
+        db: user
+    })
+}
+
+
+
+
 async function update_user(req, res){
     const id = parseInt(req.params.id)
 
@@ -61,6 +82,7 @@ async function read_user(req, res){
 }
 module.exports = {
     create_user,
+    show_user,
     read_user,
     update_user,
     delete_user
