@@ -1,5 +1,6 @@
 const { console } = require('inspector')
 const Location = require('../models/location')
+const {Op,where} = require('sequelize')
 const User = require('../models/user')
 const Quadra = require('../models/quadra')
 const Payment = require('../models/payment')
@@ -75,13 +76,29 @@ async function show_location(req,res) {
     
 }
 
-   
 
 async function read_location(req, res){
-    return res.status(200).json({
-        message: 'Sucesso', list_users: await Location.findAll()
+    const {name} = req.query
+
+    const condition = {}
+
+    if(date){
+        condition.name = {[Op.like]:`%${name}%`}
     }
-    )
+
+
+
+
+
+
+    return res.status(200).json({
+        message: 'Sucesso', db: await Location.findAll({
+            where: Object.keys(condition).length > 0?
+            condition : undefined
+        })
+
+    })
+
 }
 
 async function update_location(req, res){
