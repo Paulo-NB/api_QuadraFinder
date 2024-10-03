@@ -65,9 +65,25 @@ async function delete_quadra(req, res){
     return res.status(201).json("Foi de base")
 }
 
+async function show_quadra(req, res){
+    const id = parseInt(req.params.id)
+
+    const quadra = await Quadra.findByPk(id)
+
+    if(!quadra){
+        return res.status(404).json({ massege: "Não encontrado"})
+    }
+
+    return res.status(202).json({
+        massege: "Encontrei",
+        db: quadra
+
+    })
+}
+
 async function read_quadra(req, res){
     return res.status(200).json({
-        massege: 'Sucesso', list_quadra: await Quadra.findAll()
+        massege: 'Sucesso', db: await Quadra.findAll()
     })
 }
 
@@ -76,6 +92,7 @@ async function read_quadra(req, res){
 module.exports = {
     create_quadra,
     read_quadra,
+    show_quadra,
     update_quadra,
     delete_quadra
 }

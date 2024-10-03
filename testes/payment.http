@@ -15,7 +15,11 @@ GET http://localhost:3000/payment/read HTTP/1.1
 Content-Type: application/json
 
 ###
-DELETE http://localhost:3000/payment/del/3 HTTP/1.1
+GET http://localhost:3000/payment/show/2 HTTP/1.1
 Content-Type: application/json
 
+
+###
+DELETE http://localhost:3000/payment/del/3 HTTP/1.1
+Content-Type: application/json
 

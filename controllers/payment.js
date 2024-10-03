@@ -1,3 +1,4 @@
+const { maxHeaderSize } = require('http')
 const Payment = require('../models/payment')
 
 
@@ -32,6 +33,23 @@ async function delete_payment(req, res){
 }
 
 
+async function show_payment(req, res ) {
+    const id = parseInt(req.params.id)
+    const payment = await Payment.findByPk(id)
+
+    if(!payment){
+        return res.status(404).json({
+            mensage: "Não encontrado"
+        })
+    }
+
+    return res.status(202).json({
+        mensage: "Encontrei",
+        db: payment
+    })
+    
+}
+
 async function read_payment(req, res){
     return res.status(200).json({
         message: 'Sucesso', list_payment: await Payment.findAll()
@@ -44,7 +62,8 @@ module.exports = {
 
     create_payment,
     read_payment,
-    delete_payment
+    delete_payment,
+    show_payment
 }
 
 
