@@ -1,5 +1,6 @@
 
 const Quadra = require('../models/quadra')
+const {Op} = require('sequelize')
 
 async function create_quadra(req, res){
     const { publicplace, zipcode, photos, type, name, state, city, neighborhood} = req.body
@@ -82,8 +83,21 @@ async function show_quadra(req, res){
 }
 
 async function read_quadra(req, res){
+    const {name} = req.query
+
+    const condition = {}
+
+    if(name){
+        condition.name = {[Op.like]:`%${name}%`}
+    }
+
+
     return res.status(200).json({
-        massege: 'Sucesso', db: await Quadra.findAll()
+        massege: 'Sucesso', db: await Quadra.findAll({
+            where: Object.keys(condition).length > 0?
+            condition: undefined
+
+        })
     })
 }
 

@@ -18,6 +18,10 @@ GET http://localhost:3000/quadra/read HTTP/1.1
 Content-Type: application/json
 
 ###
+GET http://localhost:3000/quadra/read?name=Juan HTTP/1.1
+Content-Type: application/json
+
+###
 GET http://localhost:3000/quadra/show/4 HTTP/1.1
 Content-Type: application/json
 
