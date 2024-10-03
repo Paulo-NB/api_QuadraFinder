@@ -4,46 +4,14 @@ const cuser = require('../controllers/user')
 
 
 
-router.post("/create", (req, res) => {
-    const {name, pass, cpf, email, phone, type} = req.body
-
-    if(!name || !pass || !cpf || !email || !phone || !type){
-        return res.status(400).json({ 
-            message: 'Todos os campos são obrigatórios'
-        })
-    }
-
-    const ouser = cuser.create_user(name, pass, cpf, email, phone, type)
-
-    return res.status(200).json({ 
-        message: 'Sucesso', user_created: ouser
-    })
-})
+router.post("/create", cuser.create_user)
 
 
-router.get("/read",(req, res) =>{
-    return res.status(200).json({
-        message: 'Sucesso', list_users: cuser.read_user()
-    })
-})
+router.get("/read", cuser.read_user)
 
-router.put("/update/:id", (req, res) => {
-    const id = parseInt(req.params.id)
+router.put("/update/:id", cuser.update_user)
 
-    const {name, pass, cpf, email, phone, type} = req.body
-
-    let retorno = cuser.update_user(id, name, pass, cpf, email, phone, type)
-    return res.status(retorno.status).json(retorno.msg)
-})
-
-router.delete("/del/:id", (req, res)=>{
-    const id = parseInt(req.params.id)
-    if(cuser.delete_user(id)){
-        return res.status(201).json("Foi de base")
-    }else{
-        return res.status(404).json("Não encontrado")
-    }
-})
+router.delete("/del/:id", cuser.delete_user)
 
 
 module.exports = router

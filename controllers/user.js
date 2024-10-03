@@ -2,17 +2,29 @@ const User = require('../models/user')
 
 
 
-async function create_user(name, pass, cpf, email, phone, type){
-    const user = await User.create({name, pass, cpf, email, phone, type})
+async function create_user(req, res){
 
+    const {name, pass, cpf, email, phone, type} = req.body
+
+    if(!name || !pass || !cpf || !email || !phone || !type){
+        return res.status(400).json({ 
+            message: 'Todos os campos são obrigatórios'
+        })
+    }
+    const user = await User.create({name, pass, cpf, email, phone, type})
     return user
 }
 
-async function update_user(id, name, pass, cpf, email, phone, type){
-    const user = await User.findByPk(id)
+async function update_user(req, res){
+    const id = parseInt(req.params.id)
+
+    const {name, pass, cpf, email, phone, type} = req.body
 
     if(!user){
-        return {status: 404, msg: "Não encontrado"}
+        return res.status(404).json({
+            message: "Não encontrado",
+            db: null
+        })
     }
 
     if(name) user.name = name
@@ -23,25 +35,28 @@ async function update_user(id, name, pass, cpf, email, phone, type){
     if(type) user.type = type
     
     await user.save()
-
-
-    return {status: 200, msg: user}
+    return res.status(203).json({
+        message: "Atualizado",
+        db: user
+    })
 }
 
-async function delete_user(id){
+async function delete_user(req, res){
+    const id = parseInt(req.params.id)
     const user = await User.findByPk(id)
 
     if(!user){
-        return false
+         return res.status(404).json("Não encontrado")
     }
 
     await user.destroy()
 
-    return true
+    return res.status(201).json("Foi de base")
 }
-async function read_user(){
-    return await User.findAll
-
+async function read_user(req, res){
+    return res.status(200).json({
+        message: 'Sucesso', list_users: await User.findAll()
+    })
 }
 module.exports = {
     create_user,
