@@ -78,12 +78,12 @@ async function show_location(req,res) {
 
 
 async function read_location(req, res){
-    const {name} = req.query
+    const {idcourt} = req.query
 
     const condition = {}
 
-    if(date){
-        condition.name = {[Op.like]:`%${name}%`}
+    if(idcourt){
+        condition.idcourt = {[Op.like]:`%${idcourt}%`}
     }
 
 
