@@ -35,7 +35,6 @@ async function delete_payment(req, res){
 
 async function show_payment(req, res ) {
     const id = parseInt(req.params.id)
-
     const payment = await Payment.findByPk(id)
 
     if(!payment){
@@ -46,7 +45,7 @@ async function show_payment(req, res ) {
 
     return res.status(202).json({
         mensage: "Encontrei",
-        db: user
+        db: payment
     })
     
 }
