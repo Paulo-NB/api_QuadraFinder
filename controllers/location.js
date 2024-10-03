@@ -58,7 +58,7 @@ async function create_location(req, res){
 }
 
 async function show_location(req,res) {
-    const id = parenInt(req.params.id)
+    const id = parseInt(req.params.id)
 
     const location = await Location.findByPk(id)
     

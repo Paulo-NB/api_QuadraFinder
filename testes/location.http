@@ -14,7 +14,7 @@ GET http://localhost:3000/location/read HTTP/1.1
 Content-Type: application/json
 
 ###
-GET  http://localhost:3000/location/show/2 HTTP/1.1
+GET  http://localhost:3000/location/show/3 HTTP/1.1
 Content-Type: application/json
 
 ###
