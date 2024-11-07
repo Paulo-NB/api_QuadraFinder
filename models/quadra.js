@@ -14,7 +14,8 @@ Quadra.init({
     name:DataTypes.STRING,
     state:DataTypes.STRING,
     city:DataTypes.STRING,
-    neighborhood:DataTypes.STRING
+    neighborhood:DataTypes.STRING,
+    preco:DataTypes.STRING
 
 },{
     sequelize,

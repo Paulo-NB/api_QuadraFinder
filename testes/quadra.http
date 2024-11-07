@@ -10,7 +10,8 @@ Content-Type: application/json
         "name": "name",
         "state": "state",
         "city": "city",
-        "neighborhood": "neighborhood"
+        "neighborhood": "neighborhood",
+        "preco": "R$20,50"
 }
 
 ###

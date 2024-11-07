@@ -13,7 +13,11 @@ async function create_user(req, res){
         })
     }
     const user = await User.create({name, pass, cpf, email, phone, type})
-    return user
+
+    return res.status(201).json({
+        message:"criado",
+        db: user
+    })
 }
 
 

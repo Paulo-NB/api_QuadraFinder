@@ -1,5 +1,6 @@
 'use strict';
 const {type} = require('os');
+const sequelize = require('../config/database');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -12,42 +13,38 @@ module.exports = {
       },
       publicplace:{
         allowNull:false,
-       
         type: Sequelize.STRING
       },
       zipcode:{
         allowNull:false,
-        
         type: Sequelize.STRING
       },
       photos:{
         allowNull:false,
-        
         type: Sequelize.STRING
       },
       type:{
         allowNull:false,
-        
         type: Sequelize.STRING
       },
       name:{
         allowNull:false,
-       
         type: Sequelize.STRING
       },
       state:{
         allowNull:false,
-        
         type: Sequelize.STRING
       },
       city:{
         allowNull:false,
-        
         type: Sequelize.STRING
       },
       neighborhood:{
         allowNull:false,
-        
+        type: Sequelize.STRING
+      },
+      preco:{
+        allowNull:false,
         type: Sequelize.STRING
       },
       createdAt:{
