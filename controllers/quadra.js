@@ -3,15 +3,15 @@ const Quadra = require('../models/quadra')
 const {Op} = require('sequelize')
 
 async function create_quadra(req, res){
-    const { publicplace, zipcode, photos, type, name, state, city, neighborhood, preco} = req.body
+    const { publicplace, zipcode, photos, type, name, state, city, neighborhood, preco, alugado, naoalugado} = req.body
 
-    if(!publicplace || !zipcode || !photos || !type || !name || !state || !city || ! neighborhood || !preco){
+    if(!publicplace || !zipcode || !photos || !type || !name || !state || !city || ! neighborhood || !preco || !alugado || !naoalugado){
         return res.status(400).json({
             massege: 'Todos os campos são obrigatórios'
         })
     }
     
-    const quadra = await Quadra.create({publicplace, zipcode, photos, type, name, state, city, neighborhood, preco})
+    const quadra = await Quadra.create({publicplace, zipcode, photos, type, name, state, city, neighborhood, preco, alugado, naoalugado})
 
     return res.status(201).json({
         message:"criado",
@@ -24,7 +24,7 @@ async function update_quadra(req, res){
    
     const id = parseInt(req.params.id)
 
-    const {publicplace, zipcode, photos, type, name, state, city, neighborhood, preco} = req.body
+    const {publicplace, zipcode, photos, type, name, state, city, neighborhood, preco, alugado, naoalugado} = req.body
 
 
 
@@ -44,6 +44,9 @@ async function update_quadra(req, res){
     if(city) quadra.city = city
     if(neighborhood) quadra.neighborhood = neighborhood
     if(preco) quadra.preco = preco
+    if(alugado) quadra.alugado = alugado
+    if(naoalugado) quadra.naoalugado = naoalugado
+
 
     await quadra.save()
 
