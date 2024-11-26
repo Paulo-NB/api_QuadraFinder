@@ -6,12 +6,12 @@ const Quadra = require('../models/quadra')
 const Payment = require('../models/payment')
 
 async function create_location(req, res){
-    const {iduser, idcourt, idpayment, date} = req.body
+    const {iduser, idcourt, date} = req.body
     
-    if(iduser <0 || idcourt <0  || idpayment <0  || !date){
+    if(iduser <0 || idcourt <0 || !date){
 
         return res.status(400).json({
-            message: 'Os Campos iduser, idcourt, idpayment e Date são obrigatórios'
+            message: 'Os Campos iduser, idcourt, e Date são obrigatórios'
         })
 
     }
@@ -31,14 +31,6 @@ async function create_location(req, res){
         })
     }
 
-    const payment = await Payment.findByPk(idpayment)
-    if(!idpayment){
-
-        return res.status(301).json({
-            message:'O campo Pagamento e obrigatório'
-        })
-    }
-
     let  hoje = new Date()
     let  data = new Date(date)
 
@@ -50,7 +42,7 @@ async function create_location(req, res){
         
     }
 
-    const location = await Location.create({iduser, idcourt, idpayment, date})
+    const location = await Location.create({iduser, idcourt, date})
     
     return res.status(200).json({
         message:'sucesso', location_created: location

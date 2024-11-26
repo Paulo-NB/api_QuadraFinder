@@ -11,7 +11,7 @@ Content-Type: application/json
         "state": "state",
         "city": "city",
         "neighborhood": "neighborhood",
-        "preco": "R$20,50",
+        "preco": "R$150,00",
         "alugado": "alugado",
         "naoalugado": "naoalugado"
 }
@@ -40,7 +40,8 @@ Content-Type: application/json
         "name": "Juan",
         "state": "SP",
         "city": "São Carlos",
-        "neighborhood": "Santa Paula" 
+        "neighborhood": "Santa Paula", 
+        "alugado": "Alugado"
 }
 
 ###

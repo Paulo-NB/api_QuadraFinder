@@ -18,10 +18,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      idpayment:{
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       date:{
         allowNull: false,
         type: Sequelize.DATE

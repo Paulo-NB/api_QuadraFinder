@@ -12,7 +12,6 @@ class Location  extends Model{}
         },
         iduser: DataTypes.STRING,
         idcourt: DataTypes.STRING,
-        idpayment: DataTypes.STRING,
         date: DataTypes.DATEONLY
     },{
         sequelize,

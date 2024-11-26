@@ -1,21 +1,21 @@
 {
     "development":{
         "username":"rafael",
-        "password":"rafael17",
+        "password":"Rafael!17",
         "database":"teste",
         "host":"127.0.0.1",
         "dialect":"mysql"
     },
     "teste":{
         "username":"rafael",
-        "password":"rafael17",
+        "password":"Rafael!17",
         "database":"teste",
         "host":"127.0.0.1",
         "dialect":"mysql"
     },
     "production":{
         "username":"rafael",
-        "password":"rafael17",
+        "password":"Rafael!17",
         "database":"teste",
         "host":"127.0.0.1",
         "dialect":"mysql"

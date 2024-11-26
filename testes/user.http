@@ -4,15 +4,17 @@ POST http://localhost:3000/user/create HTTP/1.1
 Content-Type: application/json
 
 {
-    "name":"Paulo", 
+    "name":"tese", 
     "pass":"Senac@123",
     "cpf": "553536732",
-    "email": "rafaelazumiyoung@gmail.com",
+    "email": "senac@gmail.com",
     "phone": "16 992823571",
     "type": "admin"
     
 }
-
+### lista os usuario
+GET http://localhost:3000/user/read HTTP/1.1
+Content-Type: application/json
 
 
 ### lista os usuario

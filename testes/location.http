@@ -4,8 +4,7 @@ Content-Type: application/json
 
 {
     "iduser":4,
-    "idcourt": 10,
-    "idpayment": 10,
+    "idcourt": 2,
     "date": "2024-12-12"
 }
 
