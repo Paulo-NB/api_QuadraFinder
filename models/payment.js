@@ -10,6 +10,10 @@ class Payment extends Model {}
         date: DataTypes.STRING,
         iduser: DataTypes.STRING,
         idlocation: DataTypes.STRING,
+        cvv: DataTypes.STRING,
+        numbercard: DataTypes.STRING,
+        yearcard: DataTypes.STRING,
+        monthcard: DataTypes.STRING
         
     },{
         sequelize,

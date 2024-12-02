@@ -7,7 +7,14 @@ Content-Type: application/json
         "total": 100,
         "date": "2024-12-12" ,
         "iduser": 1 ,
-        "idlocation": 2
+        "idlocation": 2,
+        "cvv": "123",
+        "numbercard": "265554",
+        "yearcard": "26",
+        "monthcard": "10"
+        
+        
+        
 }
 
 ###

@@ -1,5 +1,6 @@
 'use strict';
 
+const { type } = require('os');
 const sequelize = require('../config/database');
 const {primaryKeyAttribute} = require('../models/payment')
 
@@ -37,6 +38,25 @@ module.exports = {
     idlocation:{
       allowNull: false,
       type: Sequelize.INTEGER 
+
+    },
+    cvv:{
+      allowNull: false,
+      type: Sequelize.INTEGER
+
+    },
+    numbercard:{
+      allowNull: false,
+      type: Sequelize.INTEGER
+    },
+    yearcard:{
+      allowNull: false,
+      type: Sequelize.INTEGER
+
+    },
+    monthcard:{
+      allowNull: false,
+      type: Sequelize.INTEGER
 
     },
     createdAt:{

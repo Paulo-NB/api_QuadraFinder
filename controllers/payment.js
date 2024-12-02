@@ -6,14 +6,14 @@ const {Op} = require('sequelize')
 
 
  async function create_payment(req, res){
-    const {method, total, date, iduser, idlocation} = req.body
+    const {method, total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard} = req.body
 
-    if(!method ||  !total ||  !date || !iduser || !idlocation){
+    if(!method ||  !total ||  !date || !iduser || !idlocation || !cvv || !numbercard || !yearcard || !monthcard){
         return res.status(400).json({ 
             message: 'Todos os campos são obrigatorios'
         })
     }
-    const payment = await Payment.create ({method, total, date, iduser, idlocation})
+    const payment = await Payment.create ({method, total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard})
     
     return res.status(200).json({mensage: "Sucesso!", payment: payment})
 }
