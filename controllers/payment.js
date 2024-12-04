@@ -6,14 +6,49 @@ const {Op} = require('sequelize')
 
 
  async function create_payment(req, res){
-    const {method, total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard} = req.body
+    const {total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard} = req.body
 
-    if(!method ||  !total ||  !date || !iduser || !idlocation || !cvv || !numbercard || !yearcard || !monthcard){
+    if(!total ){
         return res.status(400).json({ 
-            message: 'Todos os campos são obrigatorios'
+            message: 'vALOR É obrigatorios'
         })
     }
-    const payment = await Payment.create ({method, total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard})
+    if(!date){
+        return res.status(400).json({ 
+            message: 'DATA É obrigatorios'
+        })
+    }
+    if(!iduser){
+        return res.status(400).json({ 
+            message: 'Id USER É obrigatorios'
+        })
+    }
+    if(!idlocation){
+        return res.status(400).json({ 
+            message: 'location é obrigatorios'
+        })
+    }
+    if( !cvv){
+        return res.status(400).json({ 
+            message: 'cvv é obrigatorios'
+        })
+    }
+    if(!numbercard ){
+        return res.status(400).json({ 
+            message: 'numbercard é obrigatorios'
+        })
+    }
+    if(!yearcard ){
+        return res.status(400).json({ 
+            message: 'yearcard é obrigatorios'
+        })
+    }
+    if(!monthcard){
+        return res.status(400).json({ 
+            message: 'monthcard é obrigatorios'
+        })
+    }
+    const payment = await Payment.create ({total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard})
     
     return res.status(200).json({mensage: "Sucesso!", payment: payment})
 }

@@ -5,7 +5,7 @@ const sequelize = require('../config/database')
 
 class Payment extends Model {}
     Payment.init({
-        method: DataTypes.STRING,
+     
         total: DataTypes.DECIMAL,
         date: DataTypes.STRING,
         iduser: DataTypes.STRING,

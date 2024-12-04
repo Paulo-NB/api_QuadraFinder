@@ -15,21 +15,12 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER 
     },
-    method:{
-      allowNull:true,
-      type: Sequelize.STRING
-
-    },
     total:{
       allowNull: true,
       type: Sequelize.DECIMAL
 
     },
-    date:{
-      allowNull: true,
-      type: Sequelize.DATE
-
-    }, 
+   
     iduser:{
       allowNull: false,
       type: Sequelize.INTEGER 
