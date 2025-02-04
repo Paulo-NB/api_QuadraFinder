@@ -1,10 +1,32 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.0",
+    "express": "^4.21.2",
     "koa": "^2.15.3",
     "mysql2": "^3.11.3",
     "node": "^22.9.0",
     "sequelize": "^6.37.5"
-  }
+  },
+  "name": "api_quadrafinder",
+  "version": "1.0.0",
+  "main": "api.js",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulo-NB/api_QuadraFinder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paulo-NB/api_QuadraFinder/issues"
+  },
+  "homepage": "https://github.com/Paulo-NB/api_QuadraFinder#readme",
+  "description": ""
 }

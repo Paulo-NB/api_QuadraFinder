@@ -1,13 +1,18 @@
-const   request = require('supertest');
+const request = require('supertest');
 const app = require('./api'); // Importa a aplicação
 
 
 describe('Testando a API', () => {
     it('Deve retornar um JSON com status 200', async () =>{
-        const response = await request(app).get('/user/read');
+        const response = await request(app).get('/location/read');
         expect(response.status).toBe(200);
-        expect(response.body).toHaveProperty('list_users');
+        expect(response.body).toHaveProperty('db');
+    });
+    it('Deve retornar um JSON com status 200', async () =>{
+        const response = await request(app).get('/location/read');
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('db');
     });
 });
 
-//npx jest
+//npm test
