@@ -13,6 +13,11 @@ describe('Testando a API', () => {
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('db');
     });
+    it('Deve retornar um JSON com status 200', async () =>{
+        const response = await request(app).get('/quadra/read');
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('db');
+    });
 });
 
 //npm test
