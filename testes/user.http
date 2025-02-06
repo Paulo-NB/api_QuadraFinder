@@ -28,7 +28,7 @@ Content-Type: application/json
 
 
 ### editar um user
-PUT http://localhost:3000/user/update/2 HTTP/1.1
+PUT http://localhost:3001/user/update/2 HTTP/1.1
 Content-Type: application/json
 
 {
