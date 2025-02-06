@@ -6,7 +6,7 @@ const { describe } = require('./models/location');
 
 
     it('Deve criar um usuario',async()=>{
-    const res = await resquest(app)
+    const res = await request(app)
         .post('/API_QUADRAFINDER/testes/location')
         .send({
             iduser:4,
@@ -36,7 +36,7 @@ const { describe } = require('./models/location');
     });
 
     it('Att',async ()=>{
-        const res = await resquest(app)
+        const res = await request(app)
         .put('/API_QUADRAFINDER/testes/location/${iduser}')
         .set('/API_QUADRAFINDER/testes/location/${iduser}')
         .send({iduser:'teste user att'});
@@ -46,7 +46,7 @@ const { describe } = require('./models/location');
     });
 
     it('delete',async()=>{
-        const res = await resquest(app)
+        const res = await request(app)
         .delete('/API_QUADRAFINDER/testes/location/${iduser}');
         expect(res.status).toBe(200);
         
