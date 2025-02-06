@@ -1,20 +1,20 @@
 {
     "development":{
-        "username":"paulo",
+        "username":"juan",
         "password":"senac123",
         "database":"teste",
         "host":"127.0.0.1",
         "dialect":"mysql"
     },
     "teste":{
-        "username":"paulo",
+        "username":"juan",
         "password":"senac123",
         "database":"teste",
         "host":"127.0.0.1",
         "dialect":"mysql"
     },
     "production":{
-        "username":"paulo",
+        "username":"juan",
         "password":"senac123",
         "database":"teste",
         "host":"127.0.0.1",
