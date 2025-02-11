@@ -141,5 +141,62 @@ describe('Testando a API', () => {
 
         expect(res.status).toBe(201);
     });
+
+      
+    
+    it('Deve criar uma quadra', async () => {
+        const res = await request(app)
+            .post('/location/create')
+            .send({
+                iduser: userId,
+                idcourt: quadraId,
+                date: '2025-12-12' 
+            });
+        expect(res.status).toBe(200);
+        expect(res.body).toHaveProperty('location_created');
+        locationid= res.body.location_created.id
+    });
+    
+    
+    it('Deve buscar todos os agendamento',async()=>{
+            const res = await request(app)
+                .get("/location/read")
+    
+            expect(res.status).toBe(200);
+            expect(Array.isArray(res.body.db)).toBe(true);
+        });
+    
+    it('Deve buscar um agentamento pelo id',async()=>{
+            const res = await request (app)
+                .get(`/location/show/${locationid}`)
+    
+                expect(res.status).toBe(202);
+                expect(res.body.db).toHaveProperty('iduser','idcourt','date');
+        });
+    
+    it('Att',async ()=>{
+            const res = await request(app)
+                .post("/location/create" )
+    
+                .PUT(`/location/update/${locationid}`)
+
+                .send({
+                    date: "2024-12-14"
+                });
+    
+                expect(res.status).toBe(200);
+                expect(res.body.location_created).toHaveProperty(date,"2024-12-14")
+        });
+    
+    it('Deve deletar location', async () => {
+            const res = await request(app)
+                .delete(`/location/del/${locationid}`)
+    
+            expect(res.status).toBe(201);
+        });
+    
+    
+
 });
+
 //npm test
