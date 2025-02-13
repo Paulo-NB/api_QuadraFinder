@@ -10,7 +10,7 @@ const {Op} = require('sequelize')
 
     if(!total ){
         return res.status(400).json({ 
-            message: 'vALOR É obrigatorios'
+            message: 'Campo total do valor é obrigatorios'
         })
     }
     if(!date){
@@ -48,9 +48,18 @@ const {Op} = require('sequelize')
             message: 'monthcard é obrigatorios'
         })
     }
-    const payment = await Payment.create ({total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard})
-    
-    return res.status(200).json({mensage: "Sucesso!", payment: payment})
+    try {
+        // Criação do pagamento com manejo de erro
+        const payment = await Payment.create({ total, date, iduser, idlocation, cvv, numbercard, yearcard, monthcard });
+        
+        return res.status(200).json({ message: "Sucesso!", db: payment });
+    } catch (error) {
+        console.error('Erro ao criar pagamento:', error);
+        return res.status(500).json({
+            message: 'Erro interno ao criar pagamento',
+            error: error.message
+        });
+    }
 }
 
 

@@ -18,9 +18,7 @@ module.exports = {
     total:{
       allowNull: true,
       type: Sequelize.DECIMAL
-
-    },
-   
+    },   
     iduser:{
       allowNull: false,
       type: Sequelize.INTEGER 
@@ -44,6 +42,10 @@ module.exports = {
       allowNull: false,
       type: Sequelize.INTEGER
 
+    },
+    date:{
+      allowNull: false,
+      type: Sequelize.DATE
     },
     monthcard:{
       allowNull: false,
