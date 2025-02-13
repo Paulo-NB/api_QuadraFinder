@@ -134,8 +134,8 @@ describe('Testando a API', () => {
                 date: '2025-12-12' 
             });
         expect(res.status).toBe(200);
-        expect(res.body).toHaveProperty('location_created');
-        locationid= res.body.location_created.id
+        expect(res.body).toHaveProperty('db');
+        locationid= res.body.db.id
     });
 
     it('Atualizar location',async ()=>{
@@ -143,11 +143,11 @@ describe('Testando a API', () => {
             .put(`/location/update/${locationid}`)
 
             .send({
-                date: "2024-12-14"
+                date: "2025-12-14"
             });
 
             expect(res.status).toBe(203);
-            expect(res.body.location_created.date).toHaveProperty("2024-12-14")
+            expect(res.body.db).toHaveProperty("date","2025-12-14")
     });
 
 
@@ -188,8 +188,8 @@ describe('Testando a API', () => {
             });
 
             expect(res.status).toBe(200);
-            expect(res.body).toHaveProperty('payment');
-            paymentid = res.body.payment.id;
+            expect(res.body).toHaveProperty('db');
+            paymentid = res.body.db.id;
 
     });
 
