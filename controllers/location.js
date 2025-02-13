@@ -45,7 +45,7 @@ async function create_location(req, res){
     const location = await Location.create({iduser, idcourt, date})
     
     return res.status(200).json({
-        message:'sucesso', location_created: location
+        message:'sucesso', db: location
     })
 
 }

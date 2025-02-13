@@ -96,7 +96,7 @@ async function read_payment(req, res){
 
 
     return res.status(200).json({
-        message: 'Sucesso', list_payment: await Payment.findAll({
+        message: 'Sucesso', db: await Payment.findAll({
             where: Object.keys(condition).length > 0?
             condition: undefined
         })
