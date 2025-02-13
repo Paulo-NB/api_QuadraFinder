@@ -9,8 +9,8 @@ Content-Type: application/json
         "cvv": "123",
         "numbercard": "265554",
         "yearcard": "26",
-        "monthcard": "10" 
-        
+        "monthcard": "10",
+        "total": "150"
 }
 
 ###
