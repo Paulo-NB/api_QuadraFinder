@@ -138,18 +138,16 @@ describe('Testando a API', () => {
         locationid= res.body.location_created.id
     });
 
-    it('Att',async ()=>{
+    it('Atualizar location',async ()=>{
         const res = await request(app)
-            .post("/location/create" )
-
-            .PUT(`/location/update/${locationid}`)
+            .put(`/location/update/${locationid}`)
 
             .send({
                 date: "2024-12-14"
             });
 
-            expect(res.status).toBe(200);
-            expect(res.body.location_created).toHaveProperty(date,"2024-12-14")
+            expect(res.status).toBe(203);
+            expect(res.body.location_created.date).toHaveProperty("2024-12-14")
     });
 
 
@@ -207,7 +205,7 @@ describe('Testando a API', () => {
         const res = await request(app)
             .get(`/payment/read/`);
             
-        expect(res.status).toBe(202);
+        expect(res.status).toBe(200);
         expect(res.body).toHaveProperty('db');
     });
 
