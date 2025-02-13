@@ -28,42 +28,25 @@ describe('Testando a API', () => {
         userId = res.body.db.id
     });
 
-    let locationid
-    let paymentid
-    it('Deve criar um payment', async () => {
+    it('Ler usuários', async() => {
         const res = await request(app)
-            .post('/payment/create')
-            .send({
-                date: "2024-12-12",
-                iduser: userId ,
-                idlocation: locationid,
-                cvv: "123",
-                numbercard: "265554",
-                yearcard: "26",
-                monthcard: "10" 
-            });
-
-            expect(res.status).toBe(201);
-            expect(res.body).toHaveProperty('payment');
-            paymentid = res.body.payment.id;
-
+        .get('/api/user/read')
+        
+        expect(res.status).toBe(404);
+        expect(Array.isArray(res.body)).toBe(false);
     });
 
-    it('Deve buscar um usúario pelo ID' , async () =>{
+    it('Atualizar usuários', async() => {
         const res = await request(app)
-            .get(`/payment/show/${paymentid}`)
-            
-        expect(res.status).toBe(202);
-        expect(res.body).toHaveProperty('db');
+        .put(`/user/update/${userId}`)
+        .send({
+            name: 'Teste User Atualizado'
+        });
+
+        expect(res.status).toBe(203);
+        expect(res.body.db).toHaveProperty('name', 'Teste User Atualizado');
     });
 
-    it('Deve retornar um JSON com status 200', async () =>{
-        const response = await request(app).get('/quadra/read');
-        expect(response.status).toBe(200);
-        expect(response.body).toHaveProperty('db');
-    });
-    let quadraId;
-  
     it('Deve criar uma quadra', async () => {
         const res = await request(app)
             .post('/quadra/create')
@@ -135,15 +118,13 @@ describe('Testando a API', () => {
         expect(res.body.db.name).toBe('Quadra Exemplo Atualizada');
     });
 
-    it('Deve deletar uma quadra', async () => {
-        const res = await request(app)
-            .delete(`/quadra/del/${quadraId}`)
-
-        expect(res.status).toBe(201);
+    it('Deve retornar um JSON com status 200', async () =>{
+        const response = await request(app).get('/quadra/read');
+        expect(response.status).toBe(200);
+        expect(response.body).toHaveProperty('db');
     });
 
-      
-    
+    let locationid
     it('Deve criar uma quadra', async () => {
         const res = await request(app)
             .post('/location/create')
@@ -156,37 +137,89 @@ describe('Testando a API', () => {
         expect(res.body).toHaveProperty('location_created');
         locationid= res.body.location_created.id
     });
-    
-    
-    it('Deve buscar todos os agendamento',async()=>{
-            const res = await request(app)
-                .get("/location/read")
-    
-            expect(res.status).toBe(200);
-            expect(Array.isArray(res.body.db)).toBe(true);
-        });
-    
-    it('Deve buscar um agentamento pelo id',async()=>{
-            const res = await request (app)
-                .get(`/location/show/${locationid}`)
-    
-                expect(res.status).toBe(202);
-                expect(res.body.db).toHaveProperty('iduser','idcourt','date');
-        });
-    
-    it('Att',async ()=>{
-            const res = await request(app)
-                .post("/location/create" )
-    
-                .PUT(`/location/update/${locationid}`)
 
-                .send({
-                    date: "2024-12-14"
-                });
+    it('Att',async ()=>{
+        const res = await request(app)
+            .post("/location/create" )
+
+            .PUT(`/location/update/${locationid}`)
+
+            .send({
+                date: "2024-12-14"
+            });
+
+            expect(res.status).toBe(200);
+            expect(res.body.location_created).toHaveProperty(date,"2024-12-14")
+    });
+
+
+    it('Deve buscar todos os agendamento',async()=>{
+        const res = await request(app)
+            .get("/location/read")
+
+        expect(res.status).toBe(200);
+        expect(Array.isArray(res.body.db)).toBe(true);
+    });
+
+    it('Deve buscar um agentamento pelo id',async()=>{
+        const res = await request (app)
+            .get(`/location/show/${locationid}`)
+
+            expect(res.status).toBe(202);
+            expect(res.body.db).toHaveProperty('iduser','idcourt','date');
+    });
+
+
+
+
     
-                expect(res.status).toBe(200);
-                expect(res.body.location_created).toHaveProperty(date,"2024-12-14")
-        });
+
+    let paymentid
+    it('Deve criar um payment de cartão', async () => {
+        const res = await request(app)
+            .post('/payment/create')
+            .send({
+                date: "2024-12-12",
+                iduser: userId ,
+                idlocation: locationid,
+                cvv: "123",
+                numbercard: "265554",
+                yearcard: "26",
+                monthcard: "10",
+                total: 100
+            });
+
+            expect(res.status).toBe(200);
+            expect(res.body).toHaveProperty('payment');
+            paymentid = res.body.payment.id;
+
+    });
+
+    it('Deve buscar um payment pelo ID' , async () =>{
+        const res = await request(app)
+            .get(`/payment/show/${paymentid}`)
+            
+        expect(res.status).toBe(202);
+        expect(res.body).toHaveProperty('db');
+    });
+
+    it('Deve buscar um payment' , async () =>{
+        const res = await request(app)
+            .get(`/payment/read/`);
+            
+        expect(res.status).toBe(202);
+        expect(res.body).toHaveProperty('db');
+    });
+
+    
+    let quadraId;
+
+    it('Deve deletar uma quadra', async () => {
+        const res = await request(app)
+            .delete(`/quadra/del/${quadraId}`)
+
+        expect(res.status).toBe(201);
+    });
     
     it('Deve deletar location', async () => {
             const res = await request(app)
@@ -195,8 +228,19 @@ describe('Testando a API', () => {
             expect(res.status).toBe(201);
         });
     
-    
+    it('Deve deletar um usuário', async () => {
+        const res = await request(app)
+            .delete(`/user/delete/${userId}`)
+
+        expect(res.status).toBe(404);
+    });
+
+    it('Deve deletar um payment', async () => {
+        const res = await request(app)
+            .delete(`/payment/del/${paymentid}`);
+
+        expect(res.status).toBe(201);
+    });
 
 });
-
 //npm test
