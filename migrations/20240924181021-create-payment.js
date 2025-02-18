@@ -36,7 +36,7 @@ module.exports = {
     },
     numbercard:{
       allowNull: false,
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     yearcard:{
       allowNull: false,

@@ -5,7 +5,7 @@ Content-Type: application/json
 {
         "publicplace": "publicplace",
         "zipcode": "zipcode",
-        "photos": "photos",
+        "photos": "https://static.sportit.com.br/public/sportit/imagens/produtos/quadra-poliesportiva-piso-modular-externo-m2-2921.jpg",
         "type": "type",
         "name": "name",
         "state": "state",
