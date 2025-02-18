@@ -8,8 +8,7 @@ Content-Type: application/json
     "pass":"Senac@123",
     "cpf": "553536732",
     "email": "senac@gmail.com",
-    "phone": "16 992823571",
-    "type": "admin"
+    "phone": "16 992823571"
     
 }
 

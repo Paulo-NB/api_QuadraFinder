@@ -5,14 +5,14 @@ const {Op, where} = require('sequelize')
 
 async function create_user(req, res){
 
-    const {name, pass, cpf, email, phone, type} = req.body
+    const {name, pass, cpf, email, phone} = req.body
 
-    if(!name || !pass || !cpf || !email || !phone || !type){
+    if(!name || !pass || !cpf || !email || !phone){
         return res.status(400).json({ 
             message: 'Todos os campos são obrigatórios'
         })
     }
-    const user = await User.create({name, pass, cpf, email, phone, type})
+    const user = await User.create({name, pass, cpf, email, phone})
 
     return res.status(201).json({
         message:"criado",
@@ -44,7 +44,7 @@ async function show_user(req, res){
 async function update_user(req, res){
     const id = parseInt(req.params.id)
 
-    const {name, pass, cpf, email, phone, type} = req.body
+    const {name, pass, cpf, email, phone} = req.body
     const user = await User.findByPk(id)
 
     if(!user){
@@ -59,7 +59,6 @@ async function update_user(req, res){
     if(cpf) user.cpf = cpf
     if(email) user.email = email
     if(phone) user.phone = phone
-    if(type) user.type = type
     
     await user.save()
     return res.status(203).json({

@@ -10,7 +10,6 @@ User.init({
     cpf: DataTypes.STRING,
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
-    type: DataTypes.BOOLEAN
 }, {
     sequelize,
     modelName: 'User'
